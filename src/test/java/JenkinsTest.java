@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -9,7 +10,7 @@ import org.junit.Test;
 public class JenkinsTest {
 
     @Test
-    public void testPrint() {
-        System.out.println("hello");
+    public void testEquals() {
+        Assert.assertEquals("hello", "hello world".substring(0, 5));
     }
 }
