@@ -1,1 +1,4 @@
+include 'jenkins-service'
+include 'jenkins-utils'
+
 rootProject.name = 'jenkins-achieve'

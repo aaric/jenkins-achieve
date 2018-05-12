@@ -1,3 +1,5 @@
+package com.github.aaric.achieve.jenkins;
+
 import org.junit.Assert;
 import org.junit.Test;
 

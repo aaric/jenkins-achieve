@@ -1,36 +1,15 @@
-group 'com.github.aaric'
-version '0.0.2-SNAPSHOT'
-
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'org.springframework.boot'
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
-repositories {
-    maven {
-        url "http://maven.aliyun.com/nexus/content/groups/public/"
-    }
+allprojects {
+    group 'com.github.aaric'
+    version '0.1.0-SNAPSHOT'
 }
 
-dependencies {
-    compile("org.slf4j:slf4j-api:1.7.+")
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
 
-    compile("org.apache.commons:commons-lang3:3.+")
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
-    compile("org.springframework.boot:spring-boot-starter:1.5.+")
-    compile("org.springframework.boot:spring-boot-starter-log4j2:1.5.+")
-
-    testCompile("junit:junit:4.12")
-    testCompile("org.springframework.boot:spring-boot-starter-test:1.5.+")
-}
-
-configurations {
-    compile.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
-}
-
-buildscript {
     repositories {
         maven {
             url "http://maven.aliyun.com/nexus/content/groups/public/"
@@ -38,22 +17,34 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.+"
+        compile("org.slf4j:slf4j-api:1.7.+")
+
+        compile("org.apache.commons:commons-lang3:3.+")
+
+        testCompile("junit:junit:4.12")
     }
-}
 
-compileJava {
-    options.encoding = "UTF-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
+    buildscript {
+        repositories {
+            maven {
+                url "http://maven.aliyun.com/nexus/content/groups/public/"
+            }
+        }
+    }
 
-compileTestJava {
-    options.encoding = "UTF-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
+    configurations {
+        compile.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+    }
 
-bootRun {
-    addResources = true
+    compileJava {
+        options.encoding = "UTF-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    compileTestJava {
+        options.encoding = "UTF-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
 }
 
 defaultTasks "assemble"
