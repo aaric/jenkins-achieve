@@ -6,6 +6,7 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
+    apply plugin: 'jacoco'
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -44,6 +45,14 @@ subprojects {
     compileTestJava {
         options.encoding = "UTF-8"
         options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    jacocoTestReport {
+        reports {
+            // https://docs.gradle.org/current/userguide/jacoco_plugin.html
+            // https://wiki.jenkins.io/display/JENKINS/JaCoCo+Plugin
+            xml.enabled true
+        }
     }
 }
 
